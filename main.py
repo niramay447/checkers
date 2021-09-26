@@ -1,13 +1,23 @@
 import pygame
 from checkers.constants import *
 from checkers.board import *
+from checkers.playGame import *
 WINDOW  = pygame.display.set_mode((WIDTH,HEIGHT))
 pygame.display.set_caption("CHECKERS")
 FPS = 60
+
+def getPositionFromClick(clickedPosition):
+  x,y=clickedPosition
+  row = y//BOARD_SQUARE_SIZE
+  column = x//BOARD_SQUARE_SIZE
+  return row,column
+
+
 def main():
   run = True
   frameRate = pygame.time.Clock()
-  checkerBoard = Board()
+  checkerGame= PlayGame(WINDOW)
+
   while run:
     frameRate.tick(FPS)
 
@@ -17,10 +27,10 @@ def main():
         run = False
 
       if _.type == pygame.MOUSEBUTTONDOWN:
-        pass
+        position=pygame.mouse.get_pos()
+        xVal,yVal=getPositionFromClick(position)
 
-    checkerBoard.drawBoard(WINDOW)
-    pygame.display.update()
+    checkerGame.refresh()
   pygame.quit()
 
 main()

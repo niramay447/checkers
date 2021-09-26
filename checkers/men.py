@@ -19,13 +19,16 @@ class Men:
         self.isKing=True
     def draw(self,window):
         pieceRadius=BOARD_SQUARE_SIZE//2-self.PADDING
-        pygame.draw.circle(window, GREY, (self.x, self.y), pieceRadius + self.BORDER)
+        # pygame.draw.circle(window, GREY, (self.x, self.y), pieceRadius + self.BORDER)
         pygame.draw.circle(window,self.colour,(self.x,self.y),pieceRadius)
         if self.isKing:
             pygame.draw.circle(window, YELLOW, (self.x, self.y), pieceRadius + self.BORDER)
             pygame.draw.circle(window, self.colour, (self.x, self.y), pieceRadius)
 
-
+    def move(self,row,column):
+        self.row = row
+        self.column = column
+        self.getPosition()
     # def __repr__(self):
     #     return str(self.colour)
 

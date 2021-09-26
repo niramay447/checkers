@@ -4,11 +4,11 @@ from .men import *
 class Board:
   def __init__(self):
     self.board = []
-    self.selectedPiece=NotImplemented
+
     self.remainingRed = 12
     self.remainingWhite = 12
     self.redKings = 0
-    self.whiteKings = 0
+    self.blueKings = 0
     self.initialseBoard()
 
   def drawSquare(self,window):
@@ -37,3 +37,17 @@ class Board:
       for j in range(TOTAL_COLUMNS):
         man = self.board[i][j]
         if man!= 0: man.draw(window)
+
+  def makeMove(self,man,row,column):
+    self.board[man.row][man.column], self.board[row][column] = self.board[row][column], self.board[man.row][man.column]
+    man.move(row,column)
+
+    if row==TOTAL_ROWS or row==0:
+      man.makeKing()
+      if man.colour==RED:
+        self.redKings +=1
+      else:
+        self.blueKings +=1
+
+  def getMan(self,row,column):
+    return self.board[row][column]
