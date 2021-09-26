@@ -1,7 +1,8 @@
+import pygame
 from .constants import *
 class Men:
     PADDING=15
-    BORDER=5
+    BORDER=2
     def __init__(self,row,column,colour):
         self.row= row
         self.column=column
@@ -13,12 +14,15 @@ class Men:
         self.getPosition()
     def getPosition(self):
         self.x=BOARD_SQUARE_SIZE*self.column+BOARD_SQUARE_SIZE//2
-        self.y=BOARD_SQUARE_SIZE*self.column+BOARD_SQUARE_SIZE//2
+        self.y=BOARD_SQUARE_SIZE*self.row+BOARD_SQUARE_SIZE//2
     def changeToKing(self):
         self.isKing=True
     def draw(self,window):
         pieceRadius=BOARD_SQUARE_SIZE//2-self.PADDING
-        pygame.draw.circle(window, GREY, (self.x, self.y), pieceRadius + self.OUTLINE)
+        pygame.draw.circle(window, GREY, (self.x, self.y), pieceRadius + self.BORDER)
         pygame.draw.circle(window,self.colour,(self.x,self.y),pieceRadius)
+
+    def __repr__(self):
+        return str(self.colour)
 
 

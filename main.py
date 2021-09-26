@@ -19,7 +19,7 @@ def main():
       if _.type == pygame.MOUSEBUTTONDOWN:
         pass
 
-    checkerBoard.drawSquare(WINDOW)
+    checkerBoard.drawBoard(WINDOW)
     pygame.display.update()
   pygame.quit()
 
