@@ -23,7 +23,7 @@ class Board:
       for j in range(TOTAL_COLUMNS):
         if j%2==(i+1)%2:
           if i<3:
-            self.board[i].append(Men(i,j,WHITE))
+            self.board[i].append(Men(i,j,BLUE))
           elif i>4:
             self.board[i].append(Men(i,j,RED))
           else:
