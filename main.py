@@ -29,6 +29,7 @@ def main():
       if _.type == pygame.MOUSEBUTTONDOWN:
         position=pygame.mouse.get_pos()
         xVal,yVal=getPositionFromClick(position)
+        checkerGame.selectMan(xVal,yVal)
 
     checkerGame.refresh()
   pygame.quit()
